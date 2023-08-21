@@ -1,6 +1,8 @@
+// richiamo variabili
 const playButton = document.getElementById("play-game");
 const cellContainer = document.getElementById("cell-group");
 
+// button start
 playButton.addEventListener("click", function () {
   const difficulty = document.getElementById("difficulty").value;
   const cellsTotalDifficulty = difficultySelect(difficulty);
@@ -8,13 +10,22 @@ playButton.addEventListener("click", function () {
   gridGenerate(cellsTotalDifficulty, cellContainer);
 });
 
+/**
+ * Funzione che crea tutte le celle e le resetta.
+ * @param {int} cellsTotal quantità di celle da creare
+ * @param {tagContainer} cellsContainer DOC Contenitore per i cuby
+ */
 function gridGenerate(cellsTotal, cellsContainer) {
   cellsContainer.innerHTML = "";
   for (let i = 1; i <= cellsTotal; i++) {
     cellCreation(cellsTotal, i);
   }
 }
-
+/**
+ * Funzione che crea una singola cella e la formatta.
+ * @param {int} cellsTotal serve per fornire la grandezza del cubo
+ * @param {int} i serve per dare un index ad ogni cella
+ */
 function cellCreation(cellsTotal, i) {
   //   const randomNumber = Math.floor(Math.random() * 100);
   const cell = document.createElement("li");
@@ -42,6 +53,11 @@ function cellCreation(cellsTotal, i) {
   cellContainer.appendChild(cell);
 }
 
+/**
+ * Funzione che seleziona la difficoltà
+ * @param {int} difficulty parametro della difficoltà selezionata.
+ * @returns  numero per la difficoltà
+ */
 function difficultySelect(difficulty) {
   let cellsTotal = 10 * 10;
 
